@@ -32,4 +32,22 @@ RSpec.describe "User Log In" do
     expect(page).to have_content("Bad Credentials, try again.")
     
   end
+
+  it "can set location with a cookie" do
+    user = User.create(name: 'User One', email: 'email@example.com', password: 'password123')
+
+    visit "/"
+
+    click_link "Log In"
+
+    fill_in :email, with:'email@example.com'
+    fill_in :password, with: 'password123'
+    fill_in :location, with: "Denver"
+    click_button 'Log In'
+
+    expect(page).to have_content("Location: Denver")
+
+    visit login_path
+    expect(page).to have_field('Location', with: 'Denver')
+  end
 end
