@@ -5,4 +5,5 @@ class User <ApplicationRecord
   has_many :viewing_parties
 
   has_secure_password
+
 end 
