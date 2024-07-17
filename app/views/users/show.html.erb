@@ -2,6 +2,8 @@
 
 <%= button_to "Find Top Rated Movies", movies_path(@user), method: :get %><br>
 
+<h4>Location: <%= cookies[:location] %></h4>
+
 <h3>Viewing Parties:</h3>
 
 <% @user.viewing_parties.each do |vp| %>
